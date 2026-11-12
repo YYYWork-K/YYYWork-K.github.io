@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Young Kim | AI Build Log</title>
+<meta name="description" content="Young Kim, Senior Technical Program Manager. Hands-on AI builds, added regularly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDF0F5;
+    --ink: #141B2D;
+    --soft: #56607A;
+    --cobalt: #2747D6;
+    --lilac: #DCE2FF;
+    --card: #FFFFFF;
+    --edge: #D3D9E6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--cobalt); text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  .bar { display: flex; justify-content: flex-end; gap: 22px; padding: 28px 0 0; font-weight: 500; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: end; padding: 56px 0 40px; }
+  .hero h1 { margin: 0; font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 800; font-size: clamp(56px, 10vw, 128px); line-height: 0.9; letter-spacing: -0.035em; }
+  .hero .role { margin: 18px 0 0; font-size: 20px; font-weight: 500; }
+  .hero .intro { margin: 0; max-width: 46ch; color: #2E364A; }
+
+  /* Career track: the memorable element */
+  .track { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 8px 0 72px; padding: 0; list-style: none; }
+  .track::before { content: ""; position: absolute; left: 0; right: 25%; top: 11px; height: 3px; background: var(--ink); }
+  .track::after { content: ""; position: absolute; left: 75%; right: 0; top: 11px; height: 3px; background: repeating-linear-gradient(90deg, var(--cobalt) 0 10px, transparent 10px 16px); }
+  .stop { position: relative; padding-top: 38px; padding-right: 16px; }
+  .stop::before { content: ""; position: absolute; top: 2px; left: 0; width: 21px; height: 21px; border-radius: 50%; background: var(--bg); border: 3px solid var(--ink); }
+  .stop .yr { font-size: 15px; color: var(--soft); }
+  .stop .co { display: block; font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.1; margin-top: 2px; }
+  .stop .what { display: block; font-size: 15px; color: var(--soft); margin-top: 4px; max-width: 26ch; }
+  .stop.now::before { background: var(--cobalt); border-color: var(--cobalt); }
+  .stop.now .co { color: var(--cobalt); }
+
+  /* Builds */
+  .builds-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .builds-head h2 { margin: 0; font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 700; font-size: 36px; letter-spacing: -0.02em; }
+  .builds-head p { margin: 0; color: var(--soft); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px; align-items: start; }
+  .card { background: var(--card); border: 1px solid var(--edge); border-radius: 14px; padding: 26px 26px 22px; display: flex; flex-direction: column; }
+  .card .top { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--soft); }
+  .card .tag { background: var(--lilac); color: #1F2F8F; border-radius: 6px; padding: 1px 8px; font-weight: 500; }
+  .card h3 { margin: 14px 0 12px; font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; }
+  .card p { margin: 0 0 10px; font-size: 16px; }
+  .card p b { font-weight: 600; }
+  .card .tools { margin: 6px 0 18px; font-size: 14px; color: var(--soft); }
+  .card .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 18px; padding-top: 14px; border-top: 1px solid var(--edge); font-weight: 600; font-size: 15px; }
+  .slot { border: 2px dashed var(--edge); border-radius: 14px; display: grid; place-items: center; min-height: 220px; color: var(--soft); text-align: center; padding: 24px; }
+
+  footer { padding: 64px 0 56px; color: var(--soft); font-size: 14px; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 36px; }
+    .track { grid-template-columns: 1fr; gap: 26px; margin-bottom: 56px; }
+    .track::before { left: 9px; right: auto; top: 6px; bottom: 60px; width: 3px; height: auto; }
+    .track::after { display: none; }
+    .stop { padding: 0 0 0 40px; }
+    .stop::before { top: 4px; }
+    .grid { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="bar" id="profile-links"></nav>
+
+  <header class="hero">
+    <div>
+      <h1>Young<br>Kim</h1>
+      <p class="role">Senior Technical Program Manager</p>
+    </div>
+    <p class="intro">I lead platform, data and messaging programs, including AI-enabled automation. I'm now building with AI myself and adding new projects regularly. Each build below is hands-on work, with what I learned from it.</p>
+  </header>
+
+  <ol class="track" aria-label="Career path">
+    <li class="stop"><span class="yr">2010</span><span class="co">Expedia</span><span class="what">CRM, messaging and partner onboarding</span></li>
+    <li class="stop"><span class="yr">2020</span><span class="co">Microsoft</span><span class="what">Global CRM and communication platforms</span></li>
+    <li class="stop"><span class="yr">2023</span><span class="co">Lululemon</span><span class="what">Customer platforms, data pipelines, AI automation</span></li>
+    <li class="stop now"><span class="yr">2026</span><span class="co">Building with AI</span><span class="what">Hands-on projects, added regularly</span></li>
+  </ol>
+
+  <main>
+    <div class="builds-head">
+      <h2>Builds</h2>
+      <p id="count"></p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer>Seattle area. Last updated <span id="updated"></span>.</footer>
+</div>
+
+<script>
+/* ===== EDIT HERE =====
+   Your profile links. Leave a link as "" to hide it. */
+const PROFILE = {
+  linkedin: "https://www.linkedin.com/in/youngkim-yhk/",
+  github: "https://github.com/YYYWork-K",
+  updated: "Nov 2026"
+};
+
+/* Your projects, newest first. To add one, copy a whole { ... } block,
+   paste it at the top of the list, and change the text. */
+const PROJECTS = [
+  {
+    date: "Nov 2026",
+    title: "SaaS landing page with AI-generated UI",
+    kind: "Guided project (NextWork)",
+    problem: "How quickly can an AI design tool turn a short product brief into a responsive landing page that is live on the web, and what does it still get wrong?",
+    built: "A one-page marketing site for a made-up product, Lumen, with a hero section, trust bar, testimonials, and light and dark modes. Generated in v0, stored in GitHub, deployed on Vercel.",
+    learned: "The first draft looked finished but still had template text in it. AI output needs a careful review before it ships, like any other deliverable.",
+    tools: ["v0", "GitHub", "Vercel"],
+    live: "https://e-commerce-service-landing-design.vercel.app/",
+    code: "",       // GitHub repo link
+    writeup: ""     // NextWork write-up link
+  }
+];
+/* ===== END EDIT ===== */
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const nav = document.getElementById("profile-links");
+if (PROFILE.linkedin) nav.insertAdjacentHTML("beforeend", `<a href="${esc(PROFILE.linkedin)}">LinkedIn</a>`);
+if (PROFILE.github) nav.insertAdjacentHTML("beforeend", `<a href="${esc(PROFILE.github)}">GitHub</a>`);
+document.getElementById("updated").textContent = PROFILE.updated;
+document.getElementById("count").textContent = `${PROJECTS.length} shipped so far, newest first`;
+
+const cards = PROJECTS.map(p => {
+  const links = [
+    p.live && `<a href="${esc(p.live)}">Live site</a>`,
+    p.code && `<a href="${esc(p.code)}">Code</a>`,
+    p.writeup && `<a href="${esc(p.writeup)}">Write-up</a>`
+  ].filter(Boolean).join("");
+  return `<article class="card">
+    <div class="top"><span>${esc(p.date)}</span><span class="tag">${esc(p.kind)}</span></div>
+    <h3>${esc(p.title)}</h3>
+    <p><b>Goal:</b> ${esc(p.problem)}</p>
+    <p><b>Built:</b> ${esc(p.built)}</p>
+    <p><b>Learned:</b> ${esc(p.learned)}</p>
+    <div class="tools">${p.tools.map(esc).join(", ")}</div>
+    ${links ? `<div class="links">${links}</div>` : ""}
+  </article>`;
+});
+cards.push(`<div class="slot">The next build is in progress.</div>`);
+document.getElementById("grid").innerHTML = cards.join("");
+</script>
+</body>
+</html>
