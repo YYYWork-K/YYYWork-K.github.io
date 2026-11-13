@@ -117,6 +117,18 @@ const PROFILE = {
 const PROJECTS = [
   {
     date: "Nov 2026",
+    title: "RAG API that answers questions from people's profiles",
+    kind: "Guided project (NextWork)",
+    problem: "Can I build an API that answers questions from my own documents, running fully on my laptop with no cloud AI service?",
+    built: "A FastAPI service with two endpoints: one stores a person's profile, the other answers questions about it. It finds the most relevant passages in a ChromaDB vector database and passes them to a small local model (Qwen 2.5) through Ollama. I extended it to hold several people's profiles and filter answers to one person.",
+    learned: "Retrieval shapes the answer as much as the model does. Asked about hobbies, it also pulled in a career-goal passage, and the small model blended the two.",
+    tools: ["Python", "FastAPI", "ChromaDB", "Ollama", "Qwen 2.5"],
+    live: "",
+    code: "https://github.com/YYYWork-K/rag-api-fastapi",
+    writeup: ""
+  },
+  {
+    date: "Nov 2026",
     title: "SaaS landing page with AI-generated UI",
     kind: "Guided project (NextWork)",
     problem: "How quickly can an AI design tool turn a short product brief into a responsive landing page that is live on the web, and what does it still get wrong?",
